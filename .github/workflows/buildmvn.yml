@@ -32,6 +32,10 @@ jobs:
            distribution: 'temurin'
            java-version: '17'
            
+       - name: Set up Maven 3.9.11
+         uses: stCarolas/setup-maven@v5
+         with:
+           maven-version: 3.9.11           
            
        - name: Setup JFrog CLI
          uses: jfrog/setup-jfrog-cli@v4
@@ -56,7 +60,7 @@ jobs:
            
        - name: Mvn Clean Install
          run: |
-           jf mvn clean install --build-name=$BUILD_NAME --build-number=$BUILD_NUMBER --module $MODULE_NAME
+           jf mvn clean install -U --build-name=$BUILD_NAME --build-number=$BUILD_NUMBER --module $MODULE_NAME
          
        - name: Publish Build info With JFrog CLI
          run: |
