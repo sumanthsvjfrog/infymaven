@@ -75,3 +75,8 @@ jobs:
           
        - name: Run build scan
          run: jf build-scan $BUILD_NAME  $BUILD_NUMBER
+
+       - name: Debug OIDC Claims
+         uses: steve-todorov/oidc-debugger-action@v1
+         with:
+           audience: '${{ github.server_url }}/${{ github.repository }}'
