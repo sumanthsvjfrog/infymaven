@@ -25,6 +25,11 @@ jobs:
      steps:
        - name: Checkout
          uses: actions/checkout@v3
+         
+       - name: Debug OIDC Claims
+         uses: steve-todorov/oidc-debugger-action@v1
+         with:
+           audience: '${{ github.server_url }}/${{ github.repository }}'
               
        - name: Set up Java for Maven
          uses: actions/setup-java@v4
@@ -76,7 +81,4 @@ jobs:
        - name: Run build scan
          run: jf build-scan $BUILD_NAME  $BUILD_NUMBER
 
-       - name: Debug OIDC Claims
-         uses: steve-todorov/oidc-debugger-action@v1
-         with:
-           audience: '${{ github.server_url }}/${{ github.repository }}'
+       
